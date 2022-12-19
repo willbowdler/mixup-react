@@ -20,8 +20,19 @@ router.get('/chems', (req, res) => {
   db.query('SELECT * FROM `chemicals`', (err, results) => {
     err
       ? res.status(500).json({ message: err.message })
-      : res.status(200).send(results)
+      : res.status(200).json({ res: results })
   })
+})
+router.post('/chems_search', (req, res) => {
+  db.query(
+    'SELECT * FROM `chemicals` WHERE `name` LIKE ?',
+    [`${req.body.input}%`],
+    (err, results) => {
+      err
+        ? res.status(500).json({ message: err.message })
+        : res.status(200).json({ res: results })
+    }
+  )
 })
 router.get('/chem_records', (req, res) => {
   db.query('SELECT * FROM `mixup_records`', (err, results) => {
