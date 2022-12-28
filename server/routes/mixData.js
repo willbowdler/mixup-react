@@ -44,7 +44,22 @@ router.post('/chems_search', (req, res) => {
   }
 })
 router.post('/post_records', (req, res) => {
-  console.log(req.body.tanks[1].mixVals)
+  // TODO middleware that SMSs then sends the same data to be sent to mySQL server
+  // TODO fix date input and make it editable on the front end
+  db.query(
+    'INSERT INTO mixup_records (date, technician, truck, tanks) VALUES (?, ?, ?, ?)',
+    [
+      new Date(),
+      req.body.techSel,
+      req.body.truckSel.name,
+      JSON.stringify(req.body.tanks),
+    ],
+    (err, results) => {
+      err
+        ? res.status(500).json({ message: err.message })
+        : res.status(200).send(results)
+    }
+  )
 })
 router.get('/chem_records', (req, res) => {
   db.query('SELECT * FROM `mixup_records`', (err, results) => {
