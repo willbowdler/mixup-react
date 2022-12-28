@@ -23,3 +23,16 @@ const updateMixRecord = (gals, curVals, setMixRecord) => {
 useEffect(() => {
   updateMixRecord(gals, mixVals, setMixRecord)
 }, [mixVals]) // BUG infinite loop bug
+
+const useTankVals = (gals) => {
+  const [mixVals, setMixVals] = useState({
+    tankHasG: useRef(null),
+    tankNeedsFt: useRef(null),
+    tankNeedsA: useRef(null),
+    tankNeedsG: useRef(null),
+    toBeMixedA: useRef(null),
+    toBeMixedG: useRef(null),
+  })
+
+  return { mixVals, setMixVals }
+}
