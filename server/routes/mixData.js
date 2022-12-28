@@ -43,6 +43,7 @@ router.post('/chems_search', (req, res) => {
     )
   }
 })
+router.post('/post_records', (req, res) => {})
 router.get('/chem_records', (req, res) => {
   db.query('SELECT * FROM `mixup_records`', (err, results) => {
     err
