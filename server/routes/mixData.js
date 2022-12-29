@@ -45,6 +45,7 @@ router.post('/chems_search', (req, res) => {
 })
 router.post('/post_records', (req, res) => {
   // TODO middleware that SMSs then sends the same data to be sent to mySQL server
+  // TODO PDF --> SMS --
 
   db.query(
     'INSERT INTO mixup_records (date, technician, truck, tanks) VALUES (?, ?, ?, ?)',
