@@ -45,13 +45,13 @@ router.post('/chems_search', (req, res) => {
 })
 router.post('/post_records', (req, res) => {
   // TODO middleware that SMSs then sends the same data to be sent to mySQL server
-  // TODO fix date input and make it editable on the front end
+
   db.query(
     'INSERT INTO mixup_records (date, technician, truck, tanks) VALUES (?, ?, ?, ?)',
     [
-      new Date(),
+      req.body.date,
       req.body.techSel,
-      req.body.truckSel.name,
+      JSON.stringify(req.body.truckSel),
       JSON.stringify(req.body.tanks),
     ],
     (err, results) => {
