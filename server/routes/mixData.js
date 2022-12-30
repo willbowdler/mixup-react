@@ -48,11 +48,11 @@ router.post('/post_records', (req, res) => {
   // TODO PDF --> SMS --
 
   db.query(
-    'INSERT INTO mixup_records (date, technician, truck, tanks) VALUES (?, ?, ?, ?)',
+    'INSERT INTO mixup_records (date, technician, truck_id, tanks) VALUES (?, ?, (SELECT id FROM trucks WHERE name = ?), ?)',
     [
       req.body.date,
       req.body.techSel,
-      JSON.stringify(req.body.truckSel),
+      req.body.truckSel.name,
       JSON.stringify(req.body.tanks),
     ],
     (err, results) => {

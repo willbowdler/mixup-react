@@ -2,8 +2,9 @@ const express = require('express')
 const router = express.Router()
 const db = require('../database')
 
-router.get('/get_records', (req, res) => {
-  if ((req.body.case = 'all')) {
+router.post('/get_records', (req, res) => {
+  console.log(req.body)
+  if (req.body.case === 'all') {
     db.query(
       'SELECT * FROM `mixup_records` WHERE `date` BETWEEN ? and ? LIMIT ?',
       [req.body.dateRange[0], req.body.dateRange[1], req.body.itemLimit],
@@ -15,22 +16,23 @@ router.get('/get_records', (req, res) => {
     )
   }
 
-  if ((req.body.case = 'filter')) {
+  if (req.body.case === 'filter') {
     // TODO make sure this returns the right info. Slice logic should work
     db.query(
-      'SELECT * FROM `mixup_records` WHERE `date` BETWEEN ? and ? AND `technician` = ? AND `truck` = ?',
+      'SELECT * FROM `mixup_records` JOIN `trucks` ON truck_id = trucks.id  WHERE truck_id = ? AND `date` BETWEEN ? and ? AND `technician` = ?',
+
       [
+        req.body.truckHist,
         req.body.dateRange[0],
         req.body.dateRange[1],
         req.body.techHist,
-        req.body.truckHist,
       ],
       (err, results) => {
-        if (err) res.status(500).json({ message: err.message })
+        if (err) res.status(500).json({ messageFil: err.message })
         if (!err) {
           const page = req.body.page
           const limit = req.body.itemLimit
-          const resultsLength = results.length // TODO use this to decide how many page number options are rendered on the front end
+          // TODO use this to decide how many page number options are rendered on the front end
 
           // page = 1 limit = 20
           // startIndex = (1 - 1) * 20 === 0
@@ -46,12 +48,12 @@ router.get('/get_records', (req, res) => {
 
           const startIndex = (page - 1) * limit
           const endIndex = page * limit
-
+          const resultsLength = results.length
           const resultRecords = results.slice(startIndex, endIndex)
 
           res.status(200).json({
-            resultRecords: resultRecords,
-            resultsLength: resultsLength,
+            resultRecords,
+            resultsLength,
           })
         }
       }
