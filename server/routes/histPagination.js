@@ -4,14 +4,82 @@ const db = require('../database')
 
 router.post('/get_records', (req, res) => {
   console.log(req.body)
+
+  if (!req.body.itemLimit) req.body.itemLimit = 0
   if (req.body.case === 'all') {
     db.query(
-      'SELECT * FROM `mixup_records` WHERE `date` BETWEEN ? and ? LIMIT ?',
-      [req.body.dateRange[0], req.body.dateRange[1], req.body.itemLimit],
+      'SELECT * FROM `mixup_records` JOIN `trucks` ON truck_id = trucks.id   WHERE `date` BETWEEN ? and ? ',
+      [req.body.dateRange[0], req.body.dateRange[1]],
       (err, results) => {
-        err
-          ? res.status(500).json({ message: err.message })
-          : res.status(200).json({ res: results })
+        if (err) res.status(500).json({ messageFil: err.message })
+        if (!err) {
+          const page = req.body.page
+          const limit = req.body.itemLimit
+          const startIndex = (page - 1) * limit
+          const endIndex = page * limit
+
+          const resultRecords = results.slice(startIndex, endIndex)
+          const resultsLength = results.length
+          const numOfPages = Math.ceil(results.length / req.body.itemLimit)
+
+          res.status(200).json({
+            resultRecords,
+            resultsLength,
+            numOfPages,
+          })
+        }
+      }
+    )
+  }
+
+  if (req.body.case === 'truck_only') {
+    db.query(
+      'SELECT * FROM `mixup_records` JOIN `trucks` ON truck_id = trucks.id   WHERE truck_id = ? AND `date` BETWEEN ? and ?',
+      [req.body.truckHist, req.body.dateRange[0], req.body.dateRange[1]],
+      (err, results) => {
+        if (err) res.status(500).json({ messageFil: err.message })
+        if (!err) {
+          const page = req.body.page
+          const limit = req.body.itemLimit
+          const startIndex = (page - 1) * limit
+          const endIndex = page * limit
+
+          const resultRecords = results.slice(startIndex, endIndex)
+          const resultsLength = results.length
+          const numOfPages = Math.ceil(results.length / req.body.itemLimit)
+
+          res.status(200).json({
+            resultRecords,
+            resultsLength,
+            numOfPages,
+          })
+        }
+      }
+    )
+  }
+
+  if (req.body.case === 'tech_only') {
+    db.query(
+      'SELECT * FROM `mixup_records` JOIN `trucks` ON truck_id = trucks.id   WHERE `technician` = ? AND `date` BETWEEN ? and ?',
+      [req.body.techHist, req.body.dateRange[0], req.body.dateRange[1]],
+      (err, results) => {
+        if (err) res.status(500).json({ messageFil: err.message })
+        if (!err) {
+          const page = req.body.page
+          const limit = req.body.itemLimit
+          const startIndex = (page - 1) * limit
+          const endIndex = page * limit
+
+          const resultRecords = results.slice(startIndex, endIndex)
+          const resultsLength = results.length
+          const numOfPages = Math.ceil(results.length / req.body.itemLimit)
+
+          res.status(200).json({
+            resultRecords,
+            resultsLength,
+            numOfPages,
+          })
+        }
       }
     )
   }
@@ -48,12 +116,15 @@ router.post('/get_records', (req, res) => {
 
           const startIndex = (page - 1) * limit
           const endIndex = page * limit
-          const resultsLength = results.length
+
           const resultRecords = results.slice(startIndex, endIndex)
+          const resultsLength = results.length
+          const numOfPages = Math.ceil(results.length / req.body.itemLimit)
 
           res.status(200).json({
             resultRecords,
             resultsLength,
+            numOfPages,
           })
         }
       }
