@@ -107,6 +107,37 @@
   text-align: center;
 }
 
+.editAddItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 1.5rem;
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.editPlus {
+  align-items: center;
+  padding: 3px 10px 6px 10px;
+  line-height: 30px;
+
+  background-color: #fff;
+  border-radius: 100px;
+  border: 1.5px solid rgb(130, 130, 130);
+  text-align: center;
+  color: rgb(130, 130, 130);
+
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.editPlus:hover {
+  background-color: rgb(130, 130, 130);
+  color: #fff;
+}
+
 /* Modal */
 
 .edModalCont {
@@ -118,6 +149,7 @@
   height: 100vh;
   width: 100vw;
   background-color: rgba(219, 219, 219, 0.705);
+  z-index: 1;
 }
 
 .edModal {
