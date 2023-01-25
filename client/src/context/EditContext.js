@@ -12,29 +12,33 @@ export const EditProvider = ({ children }) => {
     setTableAndItems((prevState) => {
       let newState = prevState
       if (table) newState.table = table
-      // if (item) prevState.items.push(item)
       if (item) {
+        if (
+          prevState.items.some((it) => it.name === item.name) &&
+          item.editCase === 'delete'
+        ) {
+          console.log('there is an altered item that needs to be deleted')
+          newState.items = newState.items.filter((it) =>
+            it.name !== item.name ? true : false
+          )
+          newState.items.push(item)
+        }
         if (!prevState.items.length === 0) {
           prevState.items.map((prevItem) => {
             if (item.name === prevItem.name) {
               return item
             }
           })
-
-          // YOU have to figure out how to add a new item if it is not already contained in the array
         }
         if (
           prevState.items.length === 0 ||
           !prevState.items.some((it) => it.name === item.name)
         ) {
           newState.items.push(item)
-          console.log('Yahweh is my Shepherd')
         }
-        // prevState.items = prevState.items.map((item, i) => {
-        //   // NOTE if there is no item here corresponding to an item already altered push that item
-        // })
         console.log(newState)
       }
+
       if (reset === 'reset') newState.items = []
 
       return newState
@@ -42,21 +46,6 @@ export const EditProvider = ({ children }) => {
   }
 
   const [editItems, setEditItems] = useState()
-
-  // {
-  //   name: 'Will Bowdler',
-  //   editCase: 'update',
-  //   alterCols: [
-  //     {
-  //       col: 'name',
-  //       val: 'Will Bowdler',
-  //     },
-  //     {
-  //       col: 'phone_number',
-  //       val: '6015197970',
-  //     },
-  //   ],
-  // },
 
   return (
     <EditContext.Provider
