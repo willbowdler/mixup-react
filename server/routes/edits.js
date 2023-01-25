@@ -12,6 +12,7 @@ const useQuery = (query, dependencies) => {
 }
 
 const constructQuery = (tableAndItems) => {
+  console.log(tableAndItems)
   //NOTE tableAndItems is the object recieved from the body that determines the way the query is written
   tableAndItems.items.map((it) => {
     // NOTE the body object contains an array of item objects. Each item object contains values that will be used to query the database once. Each object represents a query

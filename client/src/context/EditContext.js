@@ -26,8 +26,10 @@ export const EditProvider = ({ children }) => {
         if (
           prevState.items.length === 0 ||
           !prevState.items.some((it) => it.name === item.name)
-        )
+        ) {
           newState.items.push(item)
+          console.log('Yahweh is my Shepherd')
+        }
         // prevState.items = prevState.items.map((item, i) => {
         //   // NOTE if there is no item here corresponding to an item already altered push that item
         // })
@@ -58,7 +60,7 @@ export const EditProvider = ({ children }) => {
 
   return (
     <EditContext.Provider
-      value={{ updateTableAndItems, setEditItems, editItems }}
+      value={{ tableAndItems, updateTableAndItems, setEditItems, editItems }}
     >
       {children}
     </EditContext.Provider>

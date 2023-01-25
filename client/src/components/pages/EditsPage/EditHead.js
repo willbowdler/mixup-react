@@ -4,7 +4,7 @@ import { useEdit } from '../../../context/EditContext'
 import { useData } from '../../../context/DataContext'
 
 function EditHead() {
-  const { updateTableAndItems, setEditItems } = useEdit()
+  const { tableAndItems, updateTableAndItems, setEditItems } = useEdit()
   const { fetchData } = useData()
   // TODO in this component we will push the table value into this function as the first param
 
@@ -23,7 +23,20 @@ function EditHead() {
         <option value='trucks'>Trucks</option>
         <option value='chems'>Chemicals</option>
       </select>
-      <button className={edSty.editSave}>Save</button>
+      <button
+        onClick={() => {
+          fetch('/api/edit/query', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(tableAndItems),
+          })
+        }}
+        className={edSty.editSave}
+      >
+        Save
+      </button>
     </div>
   )
 }
