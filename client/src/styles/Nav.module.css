@@ -1,0 +1,43 @@
+.navHover {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 2vh;
+
+  z-index: 2;
+}
+
+.navBar {
+  position: absolute;
+  top: -6vh;
+  width: 100vw;
+  height: 6vh;
+  background-color: rgb(104, 61, 61);
+
+  transition: all 0.25s ease;
+}
+.shown {
+  top: 0;
+}
+
+.navFlex {
+  list-style: none;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  color: #fff;
+}
+
+.navFlex a {
+  text-decoration: none;
+  color: #fff;
+
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.navFlex a:hover {
+  border-bottom: 2px solid white;
+}

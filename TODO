@@ -1,0 +1,86 @@
+Mixing App
+
+Use jsPDF and and twilio to send custom PDFs to phone numbers based on the input on the front end. Send input values to the back end
+Use node mailer to send to an email that keeps track of all of the mixups
+
+Figure out everything that you can do with excel and make sure your app can do everything that excel can do
+
+AddUser Component
+
+- Create, edit, delete
+- User
+  - Name
+  - Phone number
+  - Role
+- Only Master user can access the adduser component
+  - To add a master you must input a username and password
+- Create a user in the database that is a MasterUser
+  EditChemical Component
+- Create, edit, and delete chemical
+  - Edit their rate
+- This component would not be set on a different route, but instead would just appear under the mixing component
+
+Mixing Component
+
+- Tank Component (100 or 300)
+- Inputs
+  - Tank has (gals)
+  - Tank needs (ft)
+  - Tank needs (a)?
+  - Tank needs (gals)
+- Send button (sends info to database, sends an email, and sends a text)
+- Choose truck
+- Choose user (add capability to send to multiple users)
+- Add chemicals
+  - Make it easy to change the rate
+- Add notes INPUT\*\*\*\*
+
+Login capabilities
+
+- Make it super secure
+
+MixHistory Component
+
+- Be able to pull up mixup numbers from days past and filter them based on person or truck
+- Pages with mixup items
+  - Grab from SQL (mySQL pagination)
+  - FILTER BY TRUCK and/or PERSON
+  - OPTION FOR HOW MANY ITEMS ON A PAGE
+
+Backend
+
+- MySQL database that stores all of my numbers and users
+- Sending PDFs and texts
+- Authentication
+
+SQL Server
+
+-
+
+Database
+
+- Users: name, phone number, Role
+- Mixups: date, all them chemicals with their amounts
+-
+
+Styling
+
+- White background with a rounded form with a nice faint box-shadow
+  - Secondary colors will be black, maroon, white
+
+12/19/22
+
+TODO Data modeling for mix-records
+TODO Begin pagination. Understand how it works
+TODO Create inputs/formulas and input styling [x]
+
+12/20/22
+
+TODO Work on search functionality
+
+12/29/29
+
+TODO History comp and pagination learning
+TODO plan history comp before building it
+
+TODO import from react then dependencies then context then components then styles

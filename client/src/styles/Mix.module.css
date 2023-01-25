@@ -1,0 +1,123 @@
+.mixCont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  height: fit-content;
+  background-color: #fff;
+}
+
+.mixForm {
+  display: flex;
+  flex-direction: column;
+  width: 85vw;
+  background-color: rgb(231, 231, 231);
+  border-radius: 20px;
+  box-shadow: 0px 0px 12px rgb(179, 179, 179);
+}
+
+.mixHead {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 10vh;
+  padding: 1.5rem;
+}
+
+.mixHead h2 {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.mixHeadDate {
+  padding: 0.25rem;
+  font-size: 17px;
+}
+
+.mixSelect {
+  appearance: none;
+
+  padding: 0.7rem 0.5rem;
+  border-radius: 10px;
+  background-color: rgb(104, 61, 61);
+  color: #fff;
+  text-align: center;
+
+  cursor: pointer;
+}
+
+.mixSelect:focus {
+  outline: 2px solid rgb(255, 164, 164);
+}
+
+.tankCont {
+  display: flex;
+  justify-content: space-around;
+  min-height: 80vh;
+  height: fit-content;
+}
+
+.tank {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 1.4rem;
+  background-color: #c8a5ac;
+  width: 34vw;
+  min-height: 70vh;
+  height: fit-content;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px rgb(179, 179, 179);
+}
+
+/* Tank Input Styling */
+.tankHead {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.tankNeeds {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.tankHead input {
+  padding: 0.5rem 1rem;
+  width: 3.8rem;
+  border: 2px solid #000;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+/* Submit Button */
+
+.buttonDiv {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  float: right;
+}
+.buttonDiv p {
+  font-size: 14px;
+}
+
+.mixSubmit {
+  padding: 0.6rem 1.75rem;
+  border: 1px solid #000;
+  border-radius: 10px;
+
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.mixSubmit:hover {
+  background-color: rgb(213, 213, 213);
+  font-size: 14px;
+  border: 1px solid #fff;
+}

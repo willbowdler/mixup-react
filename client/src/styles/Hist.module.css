@@ -1,0 +1,219 @@
+.histCont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  height: fit-content;
+  background-color: #fff;
+}
+
+.histForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 85vw;
+  height: 84vh;
+  background-color: rgb(231, 231, 231);
+  border-radius: 20px;
+  box-shadow: 0px 0px 12px rgb(179, 179, 179);
+}
+
+.histHead {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+  align-items: center;
+  background-color: rgb(104, 61, 61);
+  color: #fff;
+  height: 6vh;
+  border-radius: 20px 20px 0 0;
+}
+
+.dateCont {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.histHead input[type='date'] {
+  padding: 0.25rem;
+  border: 1.5px solid #000;
+  border-radius: 3px;
+}
+
+.histSelect {
+  appearance: none;
+
+  padding: 0.7rem 0.5rem;
+  border: 1.5px solid #fff;
+  border-radius: 10px;
+  background-color: #c8a5ac;
+  text-align: center;
+
+  cursor: pointer;
+}
+
+.histHeadItemCont {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.itemCont {
+  height: 68vh;
+
+  overflow: scroll;
+}
+
+.histItem {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  min-height: 7.5vh;
+  background-color: rgb(205, 205, 205);
+  border-bottom: 1px solid black;
+}
+
+.itemColNames {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  height: 4vh;
+  border-bottom: 1px solid black;
+}
+
+.dateCol {
+  flex-basis: 10vw;
+  text-align: center;
+}
+.techCol {
+  flex-basis: 8vw;
+  text-align: center;
+}
+.truckCol {
+  flex-basis: 8vw;
+  padding: 0.25rem;
+  border-radius: 15px;
+  text-align: center;
+}
+.truckColor {
+  margin: 0 1.5rem;
+  padding: 0.25rem;
+  border-radius: 20px;
+}
+.tankCol {
+  flex-basis: 28vw;
+  text-align: center;
+}
+.chemsCol {
+  flex-basis: 27vw;
+  text-align: center;
+}
+
+.histTankVals {
+  display: flex;
+  justify-content: space-around;
+  padding: 0.25rem;
+  background-color: rgb(155, 155, 155);
+  border: 2px solid rgb(118, 118, 118);
+  border-radius: 10px;
+}
+
+.tankValsFlex {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.tankVals {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  font-size: 14px;
+}
+.histChemVals {
+  display: flex;
+  justify-content: space-around;
+  padding: 0.25rem;
+  background-color: rgb(238, 131, 131);
+  border: 2px solid rgb(153, 101, 101);
+  border-radius: 10px;
+}
+.chemValsFlex {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.chemVals {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  font-size: 14px;
+}
+
+.histFoot {
+  position: relative;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #c8a5ac;
+  height: 6vh;
+  border-radius: 0 0 20px 20px;
+}
+
+.pageCounter {
+  font-size: 12px;
+}
+
+.pageOptionsCont {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+  width: 20rem;
+}
+.pagePCont {
+  width: fit-content;
+}
+
+.pagePCont p {
+  transition: all 0.2s ease;
+
+  cursor: pointer;
+}
+
+.nextPrevCont {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.nextPrevCont div {
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.pagePCont p:hover,
+.nextPrevCont div:hover {
+  color: rgb(165, 165, 165);
+}
+
+.pageSel {
+  background-color: white;
+  padding: 0.25rem 0.5rem;
+  outline: 1.5px solid #000;
+  border-radius: 50px;
+}
+
+.limitInput {
+  width: 4rem;
+  padding: 0.25rem;
+  border: 1.5px solid #000;
+  border-radius: 5px;
+  font-size: 18px;
+}
