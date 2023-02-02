@@ -6,47 +6,6 @@ import EditHead from './EditHead'
 import Edits from './Edits'
 
 function EditsMain() {
-  useEffect(() => {
-    const data = {
-      // IMPORTANT Need to programmatically create this object based on what happens on the ui
-      // NOTE tableAndItems state. Table is updated based on select value. Items are added programmatically as certain actions take place on the items
-      table: 'techs',
-      items: [
-        {
-          name: 'Will Bowdler',
-          editCase: 'update',
-          alterCols: [
-            {
-              col: 'name',
-              val: 'Will Bowdler',
-            },
-            {
-              col: 'phone_number',
-              val: '6015197970',
-            },
-          ],
-        },
-        {
-          name: 'Ryan Hodges',
-          editCase: 'delete',
-        },
-        {
-          editCase: 'insert',
-          newItemCols: ['name', 'email', 'phone_number'],
-          newItemVals: ['Hunter', 'hunter@hunter.com', 2222222222],
-        },
-      ],
-    }
-
-    fetch('/api/edit/query', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-  }, [])
-
   return (
     <div className={edSty.editCont}>
       <div className={edSty.editForm}>

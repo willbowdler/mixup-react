@@ -63,7 +63,12 @@ function AddItem({ keys }) {
             )
           })
         : null}
-      <div className={edSty.editX}>+</div>
+      <div
+        onClick={() => updateTableAndItems(null, addItem)}
+        className={edSty.editX}
+      >
+        Save
+      </div>
     </div>
   )
 }

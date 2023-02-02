@@ -8,7 +8,7 @@ router.post('/get_records', (req, res) => {
   if (!req.body.itemLimit) req.body.itemLimit = 0
   if (req.body.case === 'all') {
     db.query(
-      'SELECT * FROM `mixup_records` JOIN `trucks` ON truck_id = trucks.id WHERE `date` BETWEEN ? and ? ORDER BY date',
+      'SELECT * FROM mixup_records JOIN trucks ON truck_id = trucks.id WHERE date BETWEEN ? and ? ORDER BY date',
       [req.body.dateRange[0], req.body.dateRange[1]],
       (err, results) => {
         if (err) res.status(500).json({ messageFil: err.message })
@@ -35,7 +35,7 @@ router.post('/get_records', (req, res) => {
 
   if (req.body.case === 'truck_only') {
     db.query(
-      'SELECT * FROM `mixup_records` JOIN `trucks` ON truck_id = trucks.id WHERE truck_id = ? AND `date` BETWEEN ? and ? ORDER BY date',
+      'SELECT * FROM mixup_records JOIN trucks ON truck_id = trucks.id WHERE truck_id = ? AND date BETWEEN ? and ? ORDER BY date',
       [req.body.truckHist, req.body.dateRange[0], req.body.dateRange[1]],
       (err, results) => {
         if (err) res.status(500).json({ messageFil: err.message })
@@ -61,7 +61,7 @@ router.post('/get_records', (req, res) => {
 
   if (req.body.case === 'tech_only') {
     db.query(
-      'SELECT * FROM `mixup_records` JOIN `trucks` ON truck_id = trucks.id WHERE `technician` = ? AND `date` BETWEEN ? and ? ORDER BY date',
+      'SELECT * FROM mixup_records JOIN trucks ON truck_id = trucks.id WHERE technician = ? AND date BETWEEN ? and ? ORDER BY date',
       [req.body.techHist, req.body.dateRange[0], req.body.dateRange[1]],
       (err, results) => {
         if (err) res.status(500).json({ messageFil: err.message })
@@ -88,7 +88,7 @@ router.post('/get_records', (req, res) => {
   if (req.body.case === 'filter') {
     // TODO make sure this returns the right info. Slice logic should work
     db.query(
-      'SELECT * FROM `mixup_records` JOIN `trucks` ON truck_id = trucks.id  WHERE truck_id = ? AND `date` BETWEEN ? and ? AND `technician` = ? ORDER BY date',
+      'SELECT * FROM mixup_records JOIN trucks ON truck_id = trucks.id  WHERE truck_id = ? AND date BETWEEN ? and ? AND technician = ? ORDER BY date',
 
       [
         req.body.truckHist,

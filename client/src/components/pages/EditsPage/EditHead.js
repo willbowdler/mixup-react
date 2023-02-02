@@ -19,9 +19,9 @@ function EditHead() {
         }}
       >
         <option value=''>--Select Group to Edit--</option>
-        <option value='techs'>Technicians</option>
+        <option value='technicians'>Technicians</option>
         <option value='trucks'>Trucks</option>
-        <option value='chems'>Chemicals</option>
+        <option value='chemicals'>Chemicals</option>
       </select>
       <button
         onClick={() => {
@@ -35,7 +35,7 @@ function EditHead() {
         }}
         className={edSty.editSave}
       >
-        Save
+        Submit
       </button>
     </div>
   )

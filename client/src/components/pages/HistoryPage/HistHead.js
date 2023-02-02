@@ -11,7 +11,7 @@ function HistHead() {
 
   useEffect(() => {
     const getData = async () => {
-      const techData = await fetchData('techs')
+      const techData = await fetchData('technicians')
       const truckData = await fetchData('trucks')
       setTechs(techData)
       setTrucks(truckData)

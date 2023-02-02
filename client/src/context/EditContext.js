@@ -17,7 +17,6 @@ export const EditProvider = ({ children }) => {
           prevState.items.some((it) => it.name === item.name) &&
           item.editCase === 'delete'
         ) {
-          console.log('there is an altered item that needs to be deleted')
           newState.items = newState.items.filter((it) =>
             it.name !== item.name ? true : false
           )

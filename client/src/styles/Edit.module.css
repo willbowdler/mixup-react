@@ -81,7 +81,9 @@
 }
 
 .editX {
+  width: 50px;
   font-weight: bold;
+  text-align: center;
   transition: all 0.15s ease;
 
   cursor: pointer;

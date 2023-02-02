@@ -14,12 +14,12 @@ export const DataProvider = ({ children }) => {
 
   const fetchData = async (c) => {
     switch (c) {
-      case 'techs':
-        return fetchBoiler('/api/mix_data/techs')
+      case 'technicians':
+        return fetchBoiler('/api/mix_data/technicians')
       case 'trucks':
         return fetchBoiler('/api/mix_data/trucks')
-      case 'chems':
-        return fetchBoiler('/api/mix_data/chems')
+      case 'chemicals':
+        return fetchBoiler('/api/mix_data/chemicals')
       default:
         throw Error('This input did not run a fetch')
     }
