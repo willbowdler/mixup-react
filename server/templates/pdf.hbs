@@ -1,0 +1,170 @@
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>Document</title>
+    <style>*, *::before, *::after { box-sizing: border-box; padding: 0; margin:
+      0; font-family: 'Poppins', sans-serif; } .mixCont { display: flex;
+      flex-direction: column; justify-content: center; align-items: center;
+      min-height: 100vh; height: fit-content; background-color: #fff; } .mixForm
+      { display: flex; flex-direction: column; width: 85vw; background-color:
+      rgb(231, 231, 231); border-radius: 20px; box-shadow: 0px 0px 12px rgb(179,
+      179, 179); } .mixHead { display: flex; justify-content: space-around;
+      align-items: center; height: 10vh; padding: 1.5rem; } .mixHead h2 {
+      display: flex; gap: 0.75rem; align-items: center; } .mixHeadDate {
+      padding: 0.25rem; font-size: 17px; } .mixSelect { appearance: none;
+      padding: 0.7rem 0.5rem; border-radius: 10px; background-color: rgb(104,
+      61, 61); color: #fff; text-align: center; cursor: pointer; }
+      .mixSelect:focus { outline: 2px solid rgb(255, 164, 164); } .tankCont {
+      display: flex; gap: 1rem; justify-content: space-around; min-height: 80vh;
+      height: fit-content; } .tank { display: flex; gap: 1rem; flex-direction:
+      column; align-items: center; padding: 1rem 1.4rem; background-color:
+      #c8a5ac; width: 45vw; min-height: 70vh; height: fit-content;
+      border-radius: 10px; box-shadow: 0px 0px 5px rgb(179, 179, 179); } /* Tank
+      Input Styling */ .tankHead { display: flex; gap: 1rem; align-items:
+      center; } .tankNeeds { display: flex; gap: 1rem; align-items: center; }
+      .tankHead input { padding: 0.5rem 1rem; width: 3.8rem; border: 2px solid
+      #000; border-radius: 10px; font-weight: bold; } .inputCont { display:
+      flex; flex-direction: column; gap: 0.25rem; width: 100%; } .inputCont
+      input { padding: 0.5rem 0.75rem; width: 5rem; border-radius: 10px; border:
+      2px solid #000; font-size: 16px; font-weight: semi-bold; } .tankRowFrst,
+      .tankRowScnd { display: flex; justify-content: space-between; align-items:
+      center; padding: 0.25rem 0.75rem; background-color: rgb(231, 231, 231);
+      border-radius: 10px; box-shadow: 0px 0px 1px rgb(76, 76, 76); } /* Tank
+      Chemicals */ .chemListCont { display: flex; flex-direction: column; /*
+      gap: 0.2rem; */ align-items: center; width: 100%; } .chemInpAndDel {
+      display: flex; align-items: center; gap: 0.5rem; margin-right: 0.5rem;
+      cursor: pointer; } .chemX { font-weight: bold; transition: all 0.15s ease;
+      } .chemX:hover { color: rgb(195, 195, 195); } .inputFlex { display: flex;
+      align-items: center; } .inputContC input { margin: 0.3rem 0.7rem; padding:
+      0.2rem; border-radius: 10px; border: 2px solid #000; font-size: 16px;
+      font-weight: semi-bold; } .searchRes { margin: 0 0.7rem 0.1rem 0.7rem;
+      padding: 0.1rem 0.9rem; width: fit-content; background-color: rgba(250,
+      250, 250, 0.858); border-radius: 5px; cursor: pointer; transition: all
+      0.15s ease; } .searchRes:hover { background-color: bisque; } /* Chemical
+      Items */ .chemItem { display: flex; justify-content: space-between;
+      align-items: center; padding: 0.2rem; width: 95%; border: 1px solid black;
+      border-radius: 10px; } .chemItem input { padding: 0.4rem 0.8rem; width:
+      5rem; font-size: 15px; border: 1.5px solid black; border-radius: 10px; }
+      .chemTitle { font-weight: 550; }
+
+    </style>
+  </head>
+  <body>
+    <div class='mixCont'>
+
+      <form>
+        <div class='mixHead'>
+          <h2>
+            Mixups for
+            <input value='{{date}}' class='mixHeadDate' type='date' />
+          </h2>
+          <select class='mixSelect'>
+            <option>
+              {{techSel}}
+            </option>
+          </select>
+          <select class='mixSelect'>
+            <option>{{truckSel.name}}</option>
+          </select>
+        </div>
+        <div class='tankCont'>
+          {{#each tanks as |tank|}}
+            <div class='tank'>
+              <div class='tankHead'>
+                <h1>{{tank.gals}}</h1>
+                <div class='tankNeeds'>
+                  <h4>Mixing Gallons: {{tank.mixVals.tankNeedsG}}</h4>
+                </div>
+              </div>
+              <div class='inputCont'>
+                <div
+                  style='border: 2px solid {{truckSel.primary_color}}'
+                  class='tankRowFrst'
+                >
+                  <h4>{{tank.gals}} Has (G)</h4>
+                  <input
+                    value='{{tank.mixVals.tankHasG}}'
+                    type='text'
+                    class='hasG'
+                  />
+                </div>
+                <div
+                  style='border: 2px solid {{truckSel.primary_color}}'
+                  class='tankRowFrst'
+                >
+                  <h4>{{tank.gals}} Needs (Ft²)</h4>
+                  <input
+                    class='inputFrst'
+                    value='{{tank.mixVals.tankNeedsFt}}'
+                    type='text'
+                  />
+                </div>
+                <div
+                  style='border: 2px solid {{truckSel.primary_color}}'
+                  class='tankRowFrst'
+                >
+                  <h4>{{tank.gals}} Needs (A)</h4>
+                  <input
+                    value='{{tank.mixVals.tankNeedsA}}'
+                    type='text'
+                    class='inputFrst'
+                  />
+                </div>
+                <div
+                  style='border: 2px solid {{truckSel.primary_color}}'
+                  class='tankRowFrst'
+                >
+                  <h4>{{tank.gals}} Needs (G)</h4>
+                  <input
+                    value='{{tank.mixVals.tankNeedsG}}'
+                    type='text'
+                    class='needsG'
+                  />
+                </div>
+                <div
+                  style='border: 2px solid {{truckSel.secondary_color}}'
+                  class='tankRowScnd'
+                >
+                  <h4>{{tank.gals}} Mix (A)</h4>
+                  <input
+                    value='{{tank.mixVals.toBeMixedA}}'
+                    type='text'
+                    class='inputScnd'
+                  />
+                </div>
+                <div
+                  style='border: 2px solid {{truckSel.secondary_color}}'
+                  class='tankRowScnd'
+                >
+                  <h4>{{tank.gals}} Mix (G)</h4>
+                  <input
+                    value='{{tank.mixVals.toBeMixedG}}'
+                    type='text'
+                    class='inputScnd'
+                  />
+                </div>
+              </div>
+              {{#each this.chemsSel as |chemical|}}
+                <div style='background-color: {{this.color}}' class='chemItem'>
+                  <input value={{this.rate}} type='text' />
+                  <div>
+                    {{this.name}}
+                  </div>
+                  <div class='chemInpAndDel'>
+                    <input
+                      value='{{multiply tank.mixVals.toBeMixedA this.rate}}'
+                      type='text'
+                    />
+                  </div>
+                </div>
+
+              {{/each}}
+            </div>
+          {{/each}}
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

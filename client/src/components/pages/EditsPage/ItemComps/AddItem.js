@@ -1,8 +1,8 @@
 import { useEdit } from '../../../../context/EditContext'
 import edSty from '../../../../styles/Edit.module.css'
 
-function AddItem({ keys }) {
-  const { updateTableAndItems } = useEdit()
+function AddItem({ item, keys, id }) {
+  const { updateTableAndItems, setAddItems } = useEdit()
 
   const returnTitle = (key) => {
     if (!key.includes('_')) {
@@ -19,29 +19,29 @@ function AddItem({ keys }) {
     }
   }
 
-  let addItem = {
-    editCase: 'insert',
-    newItemCols: keys,
-    newItemVals: keys.map((key) => null),
-  }
-  console.log(addItem)
-
   const updateAddItem = (index, newVal) => {
-    addItem.newItemVals = addItem.newItemCols.map((val, i) => {
-      if (index === i) return newVal
-      else return addItem.newItemVals[i]
+    setAddItems((prevState) => {
+      const newState = prevState.map((item) => {
+        if (item.id === id) {
+          item.newItemVals = item.newItemCols.map((val, i) => {
+            if (index === i) return newVal
+            else return item.newItemVals[i]
+          })
+          return item
+        } else return item
+      })
+      console.log(newState)
+      return newState
     })
-    console.log(addItem)
   }
 
   return (
     <div className={edSty.editItem}>
       {keys
         ? keys.map((key, i) => {
-            const updateKey = `${key}${Math.random()}`
             const title = returnTitle(key)
             return (
-              <div key={updateKey} className={edSty.itemInpCont}>
+              <div key={i} className={edSty.itemInpCont}>
                 <h3>{title}:</h3>
                 {key.includes('color') ? (
                   <input
@@ -49,7 +49,7 @@ function AddItem({ keys }) {
                       updateAddItem(i, e.target.value)
                     }}
                     type='color'
-                    defaultValue='#fff'
+                    // defaultValue={}
                   />
                 ) : (
                   <input
@@ -57,18 +57,14 @@ function AddItem({ keys }) {
                       updateAddItem(i, e.target.value)
                     }}
                     type='text'
+                    defaultValue={item.newItemVals[i]}
                   />
                 )}
               </div>
             )
           })
         : null}
-      <div
-        onClick={() => updateTableAndItems(null, addItem)}
-        className={edSty.editX}
-      >
-        Save
-      </div>
+      <div className={edSty.editX}>{null}</div>
     </div>
   )
 }

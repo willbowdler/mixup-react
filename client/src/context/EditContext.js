@@ -38,6 +38,9 @@ export const EditProvider = ({ children }) => {
         console.log(newState)
       }
 
+      if (Array.isArray(item)) {
+        item.forEach((it) => newState.items.push(it))
+      }
       if (reset === 'reset') newState.items = []
 
       return newState
@@ -45,10 +48,18 @@ export const EditProvider = ({ children }) => {
   }
 
   const [editItems, setEditItems] = useState()
+  const [addItems, setAddItems] = useState([])
 
   return (
     <EditContext.Provider
-      value={{ tableAndItems, updateTableAndItems, setEditItems, editItems }}
+      value={{
+        tableAndItems,
+        updateTableAndItems,
+        editItems,
+        setEditItems,
+        addItems,
+        setAddItems,
+      }}
     >
       {children}
     </EditContext.Provider>

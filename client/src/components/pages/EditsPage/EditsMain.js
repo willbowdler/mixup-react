@@ -1,5 +1,3 @@
-import { useEffect } from 'react'
-
 import edSty from '../../../styles/Edit.module.css'
 
 import EditHead from './EditHead'

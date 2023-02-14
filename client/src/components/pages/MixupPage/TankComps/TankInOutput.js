@@ -74,7 +74,7 @@ function TankInOutput({ tank, gals }) {
         />
       </div>
       <div
-        style={{ border: `2px solid ${truckSel.second_color}` }}
+        style={{ border: `2px solid ${truckSel.secondary_color}` }}
         className={mixSty.tankRowScnd}
       >
         <h4>{gals} Mix (A)</h4>
@@ -91,7 +91,7 @@ function TankInOutput({ tank, gals }) {
         />
       </div>
       <div
-        style={{ border: `2px solid ${truckSel.second_color}` }}
+        style={{ border: `2px solid ${truckSel.secondary_color}` }}
         className={mixSty.tankRowScnd}
       >
         {/* NOTE autopop */}

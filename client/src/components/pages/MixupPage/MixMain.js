@@ -29,6 +29,18 @@ function MixMain() {
         onSubmit={(e) => {
           e.preventDefault()
           submitRecord(date, techSel, truckSel, tanks)
+          fetch('/api/pdf/create_pdf', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              date,
+              techSel,
+              truckSel,
+              tanks,
+            }),
+          })
         }}
         className={mixSty.mixForm}
       >

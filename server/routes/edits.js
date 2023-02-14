@@ -54,7 +54,7 @@ const useQuery = (query, dependencies) => {
 //   })
 // }
 
-// NOTE to the reader. the above code is mine. the below code is my code that was formatted differently by a friend in order to make the code cleaner and easier to understand
+// NOTE to the reader. the above code is mine. the below code is my code that was formatted differently by a friend in order to make the code cleaner and easier to understand.
 
 /**
  * !! General Code Tips:
